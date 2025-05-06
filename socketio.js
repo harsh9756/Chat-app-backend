@@ -1,9 +1,7 @@
 const express = require("express");
-const cors = require("cors");
 const http = require("http");
 const { Server } = require("socket.io");
 const Message = require("./Models/msgModel");
-const { log } = require("console");
 
 const corsOptions = {
   origin: "http://localhost:5173", // Frontend URL
