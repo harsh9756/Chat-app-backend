@@ -4,7 +4,7 @@ const { Server } = require("socket.io");
 const Message = require("./Models/msgModel");
 
 const corsOptions = {
-  origin: "http://localhost:5173", // Frontend URL
+  origin: "https://we-chat-pi.vercel.app", // Frontend URL
   methods: ["GET", "POST"],
   credentials: true
 };
