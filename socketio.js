@@ -6,6 +6,7 @@ const Message = require("./Models/msgModel");
 const corsOptions = {
   origin: "http://localhost:5173", // Frontend URL
   methods: ["GET", "POST"],
+  credentials: true
 };
 
 
@@ -16,7 +17,6 @@ const server = http.createServer(app);
 const io = new Server(server, { cors: corsOptions });
 
 function getUserSocketId(Rid) {
-  console.log("users", users)
   return users[Rid]
 }
 // On user connection
@@ -27,7 +27,6 @@ io.on("connection", (socket) => {
       return;
     }
     users[userId] = socket.id;
-    console.log("User connected", userId, socket.id,users);
     io.emit("getOnlineUsers", Object.keys(users));
   });
 

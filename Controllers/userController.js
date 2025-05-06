@@ -77,7 +77,6 @@ const googleLoginController = asyncHandler(async (req, res) => {
     }
 
     const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
-    console.log("Google Client ID:", process.env.GOOGLE_CLIENT_ID);
     try {
         const ticket = await client.verifyIdToken({
             idToken: credential,
@@ -116,7 +115,6 @@ const googleLoginController = asyncHandler(async (req, res) => {
         });
 
     } catch (error) {
-        console.error("Google login error:", error.message);
         return res.status(401).send("Invalid Google token.");
     }
 });

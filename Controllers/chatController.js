@@ -28,7 +28,6 @@ const createChatController = asyncHandler(async (req, res) => {
             });
 
             await Chatitem.save();
-            console.log("Chat item created");
 
             const fullChat = await Chat.find({ users: user._id })
                 .populate('users', 'name email')
@@ -37,7 +36,6 @@ const createChatController = asyncHandler(async (req, res) => {
                     populate: { path: 'sender', select: 'name email' }
                 })
                 .sort({ updatedAt: -1 });
-            console.log("Rsid online h and bata diya", Rsid);
             if (Rsid) {
                 Chatitem = await Chatitem.populate('users', 'name email');
                 io.to(Rsid).emit("newChat", Chatitem);

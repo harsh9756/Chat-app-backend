@@ -7,7 +7,6 @@ function generateToken(user) {
         const token = jwt.sign(user, process.env.SECRET_KEY, { expiresIn: '7d' });
         return token;
     } catch (error) {
-        console.error('Error generating token:', error);
         throw new Error('Token generation failed');
     }
 }
