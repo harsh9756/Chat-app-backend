@@ -14,6 +14,9 @@ app.use("/user", userRoutes);
 app.use("/chat", chatRoutes);
 app.use("/msg", msgRoutes);
 
+app.get("/", (req, res) => {
+  res.send("API is running successfully");
+});
 
 server.listen(process.env.PORT || 3000, () => {
 });
